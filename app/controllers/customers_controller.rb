@@ -22,9 +22,13 @@ class CustomersController < ApplicationController
   end
 
   def update 
+    Customer.update_customer(customer_params, @customer.id, current_user.id)
+    redirect_to @customer
   end
 
   def destroy
+    Customer.delete_customer(@customer.id)
+    redirect_to customers_path
   end
 
 
